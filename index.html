@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Google Maps Icons</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"
+    />
+  </head>
+  <style>
+    body {
+      text-align: center;
+      font-family: "Montserrat", sans-serif;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .form {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      align-self: center;
+      justify-items: center;
+      width: 400px;
+      margin: auto;
+    }
+    .card {
+      display: flex;
+      flex: 1 0 120px;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      align-self: center;
+      justify-items: center;
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+  <body>
+    <h1>Google Maps Icons</h1>
+
+    <div id="app">
+      <div class="form">
+        <label>Scale</label>
+        <multiselect
+          v-model="scale"
+          :options="scales"
+          :show-labels="false"
+          placeholder="Pick a value"
+        ></multiselect>
+
+        <label>Color</label>
+        <multiselect
+          v-model="color"
+          :options="colors"
+          :show-labels="false"
+          placeholder="Pick a value"
+        ></multiselect>
+      </div>
+      <div class="cards">
+        <a
+          class="card"
+          v-for="icon in icons"
+          target="_blank"
+          rel="noopener noreferrer"
+          v-bind:href="getIcon(icon.name, {scale, color})"
+        >
+          <img
+            v-bind:src="getIcon(icon.name, {scale, color})"
+            v-bind:alt="icon.name"
+          />
+          <span>{{ icon.name }}</span>
+        </a>
+      </div>
+    </div>
+
+    <script type="module">
+      import googleMapIcon, { icons, families } from "./index.js";
+
+      Vue.component("multiselect", window.VueMultiselect.default);
+
+      const scale = 2;
+      const iconsList = Object.keys(icons).map(icon => {
+        return { name: icon, ...icons[icon] };
+      });
+      const colorsList = [
+        "",
+        ...Object.keys(families).map(family => {
+          return families[family].color;
+        })
+      ];
+
+      const app = new Vue({
+        el: "#app",
+        data: {
+          color: null,
+          scale,
+          scales: [1, 1.5, 2, 2.5, 3, 3.5, 4],
+          icons: iconsList,
+          colors: colorsList
+        },
+
+        computed: {
+          scale: {
+            get() {
+              return this.value;
+            },
+            set(newVal) {
+              this.value = newVal;
+            }
+          }
+        },
+        methods: {
+          getIcon: function(icon, opt) {
+            return googleMapIcon(icon, opt);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

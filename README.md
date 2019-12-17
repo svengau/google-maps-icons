@@ -1,8 +1,10 @@
 # Google Map Icons
 
+[![npm version](https://badge.fury.io/js/google-maps-icons.svg)](https://badge.fury.io/js/google-maps-icons)
+
 [DEMO SITE HERE](https://svengau.github.io/google-maps-icons/)
 
-**Important note**: this project is not an official Google Project, and is provided as this.
+**Important note**: this project is not an official Google Project, and is provided "as is".
 
 ## Overview
 
@@ -49,5 +51,5 @@ Options:
 
 ## Useful links
 
-https://www.blog.google/products/maps/google-maps-gets-new-look/
-https://docs.google.com/spreadsheets/d/1YivKsYBr7pQ7R_VK2WPszc0CNakqlbT6zGeqCvuQRS8/edit#gid=0
+[[Blog Google] Google Maps gets a new look](https://www.blog.google/products/maps/google-maps-gets-new-look/)
+[[Google Spreadsheets] Iconos de Google Maps](https://docs.google.com/spreadsheets/d/1YivKsYBr7pQ7R_VK2WPszc0CNakqlbT6zGeqCvuQRS8/edit#gid=0)
