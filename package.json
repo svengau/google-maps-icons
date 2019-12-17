@@ -1,6 +1,6 @@
 {
   "name": "google-maps-icons",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple helper library that references all Google Maps Icons",
   "main": "index.js",
   "author": "Sven Gaubert",
