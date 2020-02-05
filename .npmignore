@@ -1,0 +1,8 @@
+.history
+docs/
+dist/tests/
+src/
+tests/
+.travis.yml
+codecov.yml
+index.html
