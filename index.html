@@ -97,19 +97,19 @@
     </div>
 
     <script type="module">
-      import googleMapIcon, { icons, families } from "./index.js";
+      import googleMapIcon, { icons, families } from "./src/index.js";
 
       Vue.component("multiselect", window.VueMultiselect.default);
 
       const scale = 2;
-      const iconsList = Object.keys(icons).map(icon => {
+      const iconsList = Object.keys(icons).map((icon) => {
         return { name: icon, ...icons[icon] };
       });
       const colorsList = [
         "",
-        ...Object.keys(families).map(family => {
+        ...Object.keys(families).map((family) => {
           return families[family].color;
-        })
+        }),
       ];
 
       const app = new Vue({
@@ -119,7 +119,7 @@
           scale,
           scales: [1, 1.5, 2, 2.5, 3, 3.5, 4],
           icons: iconsList,
-          colors: colorsList
+          colors: colorsList,
         },
 
         computed: {
@@ -129,14 +129,14 @@
             },
             set(newVal) {
               this.value = newVal;
-            }
-          }
+            },
+          },
         },
         methods: {
-          getIcon: function(icon, opt) {
+          getIcon: function (icon, opt) {
             return googleMapIcon(icon, opt);
-          }
-        }
+          },
+        },
       });
     </script>
   </body>
